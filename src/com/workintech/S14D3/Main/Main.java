@@ -5,6 +5,7 @@ import com.workintech.S14D3.Car.Ford;
 import com.workintech.S14D3.Car.Holden;
 import com.workintech.S14D3.Car.Mitsubishi;
 import com.workintech.S14D3.CarSkeleton.CarSkeleton;
+import com.workintech.S14D3.CarSkeleton.GasPoweredCar;
 
 public class Main {
     public static void main(String[] args) {
@@ -42,5 +43,10 @@ public class Main {
         System.out.println(holden.accelerate());
 
         System.out.println(holden.brake());
+
+        CarSkeleton carSkeleton1= new GasPoweredCar("Şahin","Kro54", 75,2);
+        carSkeleton1.drive();
+        System.out.println(carSkeleton1);
+
     }
 }

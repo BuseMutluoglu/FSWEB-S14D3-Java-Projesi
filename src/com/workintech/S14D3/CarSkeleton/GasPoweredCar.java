@@ -10,4 +10,13 @@ public class GasPoweredCar extends CarSkeleton{
         this.cylinders = cylinders;
     }
 
+    @Override
+    public String toString() {
+      StringBuilder builder=new StringBuilder();
+      builder.append("Name: " + getName() + "\n");
+      builder.append("Description: " + getDescription() + "\n");
+      builder.append("Cylinders: " + cylinders + "\n");
+      builder.append("avgKmPerLitre: " +avgKmPerLitre + "\n");
+      return builder.toString();
+    }
 }

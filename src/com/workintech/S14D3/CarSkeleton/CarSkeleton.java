@@ -9,14 +9,41 @@ public class CarSkeleton {
         this.description = description;
     }
 
-    public void startEngine(){
-        System.out.println("Motor Çalıştırıldı");
+    public String getName() {
+        return name;
     }
-    public void drive(){
-        runEngine();
-        System.out.println("Driving");
+
+    public String getDescription() {
+        return description;
     }
-    protected void runEngine(){
-        System.out.println("Motor çalıştır.");
+
+    public String  startEngine(){
+        System.out.println("Clsas Name: " + getClass().getSimpleName());
+        return getName() + " starting engine";
+    }
+    public String drive(){
+        runEngine(this); //drive ı kim cağırıyorsa this odur. instanceın kendisi
+        return getName() + " is driving...";
+    }
+    protected void runEngine(CarSkeleton carSkeleton){
+        if(carSkeleton instanceof GasPoweredCar){
+            //((GasPoweredCar)carSkeleton)
+            System.out.println("The car engine is starting with gas");
+        } else if (carSkeleton instanceof HybridCar) {
+            System.out.println("The car engine is starting with boyh gas and hybrid");
+        } else if (carSkeleton instanceof ElectricCar) {
+            ((ElectricCar)carSkeleton).getAvgKmPerCharge();
+            System.out.println("The car engine is starting with Electric");
+        }  else {
+            System.out.println("Car type is not valid.");
+        }
+    }
+
+    @Override
+    public String toString() {
+    StringBuilder builder=new StringBuilder();
+    builder.append("Name: " + name + "\n");
+    builder.append("Description: " + description +"\n");
+    return builder.toString();
     }
 }

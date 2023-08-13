@@ -1,5 +1,7 @@
 package com.workintech.S14D3.Car;
 
+import java.util.Objects;
+
 public class Car {
     private boolean engine;
     private int cylinders;
@@ -9,8 +11,8 @@ public class Car {
     public Car(int cylinders, String name) {
         this.cylinders = cylinders;
         this.name = name;
-        this.engine=true;
-        this.wheels=4;
+        setEngine(true);
+        setWheels(4);
     }
 
     public int getCylinders() {
@@ -21,19 +23,31 @@ public class Car {
         return name;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public void setEngine(boolean engine) {
+        this.engine = engine;
+    }
+
+    public void setWheels(int wheels) {
+        this.wheels = wheels;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; //ramdekiler eşitse this bu sınıf o gelen değer.
+        if (o == null || getClass() != o.getClass()) return false;
+        return ((Car) o).cylinders ==this.cylinders &&
+                ((Car) o).name.equals(this.name);
+        /*Car car = (Car) o;
+        return cylinders == car.cylinders && Objects.equals(name, car.name);*/
+    }
+
+
+    @Override
     public String toString() {
-        return "Car{" +
-                "engine=" + engine +
-                ", cylinders=" + cylinders +
-                ", name='" + name + '\'' +
-                ", wheels=" + wheels +
-                '}';
+        StringBuilder builder= new StringBuilder();
+        builder.append("engine=" + engine + "\n");
+        builder.append(", cylinders=" + cylinders + "\n");
+        return builder.toString();
     }
    public String startEngine(){
        System.out.println("Class Name: " + getClass().getSimpleName());
